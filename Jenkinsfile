@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  tools { 
+      maven 'maven3' 
+      jdk 'temurin8' 
+  }
   stages {
     stage('check out') {
       steps {
