@@ -1,17 +1,12 @@
 pipeline {
   agent any
-
-  tools {
-    maven 'maven3'
-    jdk 'temurin8'
-  }
-
   stages {
     stage('checkout') {
       steps {
         git(url: 'https://github.com/sirjansk/maven-samples', branch: 'master')
       }
     }
+
     stage('git bisect') {
       steps {
         sh '''
@@ -20,5 +15,10 @@ pipeline {
         '''
       }
     }
+
+  }
+  tools {
+    maven 'maven3'
+    jdk 'temurin8'
   }
 }
