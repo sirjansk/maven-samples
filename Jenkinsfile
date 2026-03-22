@@ -1,21 +1,16 @@
 pipeline {
   agent any
-  stages {
-    stage('check out') {
-      steps {
-        git(url: 'https://github.com/sirjansk/maven-samples', branch: 'master')
-      }
-    }
 
+  tools {
+    maven 'maven3'
+    jdk 'temurin8'
+  }
+
+  stages {
     stage('run') {
       steps {
         sh 'mvn verify'
       }
     }
-
-  }
-  tools {
-    maven 'maven3'
-    jdk 'temurin8'
   }
 }
